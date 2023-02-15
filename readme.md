@@ -12,7 +12,7 @@ pip install -r requirements.txt
 ## How to run the code
 ### Step 1 - Configuring parameters
 
-The following parameters are to be set in the ['config.gin'](https://github.tik.uni-stuttgart.de/iss/dl-lab-22w-team04/blob/master/diabetic_retinopathy/configs/config.gin) file.
+The following parameters are to be set in the ['config.gin'](https://github.com/tombjay/DL-Diabetic-Retinopathy-Detection/blob/main/configs/config.gin) file.
     
   - **n_classes** - To choose between 2-class or 5-class classification problem (int).
   - **img_height** & **img_width** - To define dimensions of image presented to the model (int).
@@ -27,7 +27,7 @@ python3 main.py
 ```
 - By default, the functionality is to train the 'resnet_v2' model.
 
-- To change functionality, the following flags are to be altered in ['main.py'](https://github.tik.uni-stuttgart.de/iss/dl-lab-22w-team04/blob/master/diabetic_retinopathy/main.py) file.
+- To change functionality, the following flags are to be altered in ['main.py'](https://github.com/tombjay/DL-Diabetic-Retinopathy-Detection/blob/main/main.py) file.
   
   - __train__ - Specify whether to train or evaluate a model (bool).
   - __model_name__ - Specify the model to be trained. #custom, #inception_resnet_v2, #resnet_v2 #inception_v3 #xception (str).
@@ -40,7 +40,7 @@ python3 main.py
 
 Bayesian hyperparameter optimization is performed using the sweeps functionality in wandb. 
 
-  - Open the file ['hyper_parameter_train.py'](https://github.tik.uni-stuttgart.de/iss/dl-lab-22w-team04/blob/master/diabetic_retinopathy/hyper_parameter_train.py) and import the required model.
+  - Open the file ['hyper_parameter_train.py'](https://github.com/tombjay/DL-Diabetic-Retinopathy-Detection/blob/main/hyper_parameter_train.py) and import the required model.
   - Modify the sweep configuration to include the required hyper parameters.
   - Run the file by executing the command,
 
@@ -63,8 +63,8 @@ Ensemble(average) | 87.40% | - | 93.20 | 85.94 | 0.87
 
 ### Deep Visualization
 
-![Gradcam_xception](https://github.tik.uni-stuttgart.de/iss/dl-lab-22w-team04/blob/master/diabetic_retinopathy/Results/xception/vis.jpg)
+![Gradcam_xception](https://github.com/tombjay/DL-Diabetic-Retinopathy-Detection/blob/main/Results/xception/vis.jpg)
 
-For more detailed results kindly have a look in ['Results'](https://github.tik.uni-stuttgart.de/iss/dl-lab-22w-team04/tree/master/diabetic_retinopathy/Results) folder.
+For more detailed results kindly have a look in ['Results'](https://github.com/tombjay/DL-Diabetic-Retinopathy-Detection/tree/main/Results) folder.
 
 To view the statistics of our best runs, kindly follow this [link](https://wandb.ai/team_4_dl/Diabetic_Retinopathy_Best%20Runs?workspace=default)
