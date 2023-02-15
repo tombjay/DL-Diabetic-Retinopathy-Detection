@@ -1,0 +1,85 @@
+################################################Global Parameters####################################################
+n_classes = 2 #5
+Graham_preprocessing = True
+img_height =256
+img_width = 256
+model_name  = "resnet_v2" #"custom", "inception_resnet_v2", "resnet_v2", "inception_v3", "xception"
+#evaluate.visualize_img = "/Users/thinesh/Desktop/dl-lab-22w-team04/diabetic_retinopathy/Preprocessed_IDRID_dataset/test/IDRiD_072.jpg"
+#####################################################################################################################
+################################################Data_Directory Parameters############################################
+##Thinesh_Local
+load.data_dir = "/Users/thinesh/Desktop/dl-lab-22w-team04/diabetic_retinopathy/Preprocessed_IDRID_dataset/" #Thinesh_Local
+load.raw_data_dir = "/Users/thinesh/Desktop/dl-lab-22w-team04/diabetic_retinopathy/IDRID_dataset/"  #Thinesh_Local
+##Google_colab
+#load.tf_data_dir = "/content/drive/MyDrive/IDRID_dataset/" #Google_colab
+#load.raw_data_dir = "/content/drive/MyDrive/Preprocessed_IDRID_dataset/" #Google_colab
+
+################################################Dataset Parameters##################################################
+load.name = 'idrid' #eyepacs
+load.n_classes = %n_classes
+load.graham = %Graham_preprocessing
+preprocess.n_classes = %n_classes
+preprocess.model_name = %model_name
+prepare.caching = False
+prepare.batch_size = 32 ##Hyper_parameter
+preprocess_image.graham = %Graham_preprocessing
+preprocess_image.img_height = %img_height
+preprocess_image.img_width = %img_width
+
+################################################Model Parameters###################################################
+#Inception_Resnetv2 Model
+inception_resnet_v2.input_shape = (%img_height,%img_width,3)
+inception_resnet_v2.n_classes = %n_classes
+inception_resnet_v2.dense_units = 128 ##Hyper_parameter
+inception_resnet_v2.base_trainable = True
+inception_resnet_v2.dropout_rate = 0.4969 ##Hyper_parameter
+
+#resnet_v2 Model
+resnet_v2.input_shape = (%img_height,%img_width,3)
+resnet_v2.n_classes = %n_classes
+resnet_v2.dense_units = 128 ##Hyper_parameter
+resnet_v2.base_trainable = True
+resnet_v2.dropout_rate = 0.1 ##Hyper_parameter
+
+#Custom Model
+customModel.input_shape = (%img_height,%img_width,3)
+customModel.n_classes = %n_classes
+customModel.dense_units = 64 ##Hyper_parameter
+customModel.dropout_rate = 0.1 ##Hyper_parameter
+
+#Inception_v3 Model
+inception_v3.input_shape = (%img_height,%img_width,3)
+inception_v3.n_classes = %n_classes
+inception_v3.dense_units = 128 ##Hyper_parameter
+inception_v3.base_trainable = True
+inception_v3.dropout_rate = 0.1 ##Hyper_parameter
+
+#xception Model
+xception.input_shape = (%img_height,%img_width,3)
+xception.n_classes = %n_classes
+xception.dense_units = 128 ##Hyper_parameter
+xception.base_trainable = True
+xception.dropout_rate = 0.1 ##Hyper_parameter
+
+
+vgg_like.input_shape = (%img_height,%img_width,3)
+vgg_like.n_classes = %n_classes
+vgg_like.base_filters = 16
+vgg_like.n_blocks = 5
+vgg_like.dense_units = 64
+vgg_like.dropout_rate = 0.44
+
+vgg_block.kernel_size = (3, 3)
+################################################TrainingParameters##################################################
+Trainer.model_save_dir = "diabetic_retinopathy/checkpoints/best_model/"
+Trainer.total_steps =  10000
+Trainer.log_interval = 100
+Trainer.ckpt_interval = 100
+Trainer.learning_rate = 0.0001  ##Hyper_parameter
+Trainer.patience = 5
+
+
+
+
+
+
